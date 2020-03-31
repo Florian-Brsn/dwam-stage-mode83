@@ -31,3 +31,54 @@ if(isset($_POST['submit']))
 }
 
 ?>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Titre -->
+    <header class=" d-block text-center mt-5 text-alerte">
+    <div>
+    <h1> <a href="connexion.php">Page de connexion .</a> </h1>
+    </div>
+    </header>
+
+    <!-- Formumlaire -->
+<section class=" bg-secondary px-5 mt-5 py-3  text-light">
+  <div>
+
+    <form method="POST">
+        <div class=" form-group mt-3" >
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Entrez votre adresse email" class="form-control" />
+      </div>
+
+      <div class=" form-group">
+        <label>Mot De Passe</label>
+        <input type="text" name="mdp" placeholder="Entrez votre Mot De Passe." class="form-control" />
+      </div>
+    
+      
+        <input  type="submit" name="submit" value="Se connecter !" />
+      </form>  
+
+
+      <?php
+        if(isset($erreur))
+        {
+            echo "<font color='red'>".$erreur."</font>";
+        }
+
+       
+
+      ?>
+
+  </div>
+</section>
+</body>
+</html>
