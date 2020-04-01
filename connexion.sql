@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Mar 31 Mars 2020 à 11:04
+-- Généré le :  Mer 01 Avril 2020 à 16:09
 -- Version du serveur :  5.7.29-0ubuntu0.18.04.1
 -- Version de PHP :  7.2.24-0ubuntu0.18.04.3
 
@@ -27,18 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `connexion` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
-  `email` text NOT NULL,
-  `mdp` text NOT NULL
+  `email` varchar(255) NOT NULL,
+  `mdp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `connexion`
---
-
-INSERT INTO `connexion` (`id`, `pseudo`, `email`, `mdp`) VALUES
-(1, 'admin', 'admin@test.xyz', 'admin');
 
 --
 -- Index pour les tables exportées
@@ -48,8 +41,17 @@ INSERT INTO `connexion` (`id`, `pseudo`, `email`, `mdp`) VALUES
 -- Index pour la table `connexion`
 --
 ALTER TABLE `connexion`
-  ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `connexion`
+--
+ALTER TABLE `connexion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
