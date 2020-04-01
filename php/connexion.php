@@ -73,9 +73,6 @@ if(isset($_POST['submit']))
         {
             echo "<font color='red'>".$erreur."</font>";
         }
-
-       
-
       ?>
 
   </div>
