@@ -1,0 +1,62 @@
+body
+{
+    background-color:whitesmoke ;
+}
+img
+{
+    width: 200px;
+	height: 200px;
+}
+h1   /* titre principal */
+{
+    font-family: verdana bold;
+    border-left: #e96555;
+    color: #1f1f1f;
+    margin: 1.6vw 0 0 0;
+    text-align: center;
+    font-size: 2.2em;
+}
+.text
+{
+    margin: 0 0 0 23%;
+    font-size: 20px;
+    font-family: verdana bold;
+    color: #5f5d5d;
+}
+.lt  /* Lettre de l'écrito qui a été modifié dans le premier Logo*/
+{
+    font-size: 25px;
+    color: #b0762a;
+}
+.uo  /* Deucième Logo ou l'écrito a éte modifié */
+{
+    font-size: 25px;
+    color: #1d3b6c;
+}
+#conteneur_des_logo
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4% 0 4% 30%;
+}
+#footer
+{
+    padding: 7vw 1vw 7vw 1vw;
+}
+.logiciel  /* logo 1 */
+{
+    background-color: white;
+    border-radius: 50%;
+    border: solid 0.3vw black;
+    padding: 4vw ;
+    margin-right: 3%;
+    text-align: justify;
+}
+.outils /* logo 2 */
+{
+    background-color: white;
+    border-radius: 50%;
+    border: solid 0.3vw black;
+    padding: 4vw;
+    text-align: justify;
+}
