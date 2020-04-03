@@ -99,16 +99,21 @@ if(isset($_POST['submit']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dwam-stage-mode83/css/bootstrap.min.css">
 </head>
 <body>
 <!--Titre et header-->
-<header class="d-block text-center mt-5 text-danger">
-<div>
+<header>
+<!-- <div>
 <h1>
 <a href="inscription.php">Page d'inscription</a>
 </h1>
-</div>
+</div> -->
+    
+        <?php 
+        include "header.php";
+        ?>
+    
 </header>
 
 <!--Formulaire-->
@@ -146,6 +151,14 @@ if(isset($_POST['submit']))
         </form>
     </div>
 </section>
+
+
+    <footer>
+    <?php
+    include 'footer.php';
+    ?>
+    </footer>
+
 </body>
 </html>
 

@@ -37,7 +37,7 @@ if(isset($_POST['submit']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dwam-stage-mode83/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -66,7 +66,7 @@ if(isset($_POST['submit']))
         <input  type="submit" name="submit" value="Se connecter !" />
       </form>  
 
-      <button class="btn btn-danger"> <a href=" php/inscription.php">Inscription</a></button>
+      <button class="btn btn-danger"> <a href=" /dwam-stage-mode83/php/inscription.php">Inscription</a></button>
 
 
       <?php
@@ -77,10 +77,14 @@ if(isset($_POST['submit']))
          
       ?>
 
-      <header>
-      <?php include "footer.php"; ?>
-      </header>
+      
   </div>
 </section>
+        <footer>
+        
+          <?php include "footer.php"; ?>
+        
+        </footer>
+
 </body>
 </html>
