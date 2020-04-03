@@ -42,12 +42,11 @@ if(isset($_POST['submit']))
 <body>
 
 <!-- Titre -->
-    <header class=" d-block text-center mt-5 text-alerte">
-    <div>
-    <h1> <a href="connexion.php">Page de connexion .</a> </h1>
-    </div>
-    </header>
-
+<header>
+   <?php 
+    include "header.php";
+   ?>
+</header>
     <!-- Formumlaire -->
 <section class=" bg-secondary px-5 mt-5 py-3  text-light">
   <div>
@@ -67,14 +66,20 @@ if(isset($_POST['submit']))
         <input  type="submit" name="submit" value="Se connecter !" />
       </form>  
 
+      <button class="btn btn-danger"> <a href=" php/inscription.php">Inscription</a></button>
+
 
       <?php
         if(isset($erreur))
         {
             echo "<font color='red'>".$erreur."</font>";
         }
+         
       ?>
 
+      <header>
+      <?php include "footer.php"; ?>
+      </header>
   </div>
 </section>
 </body>

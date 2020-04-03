@@ -30,11 +30,32 @@ if(isset($_POST['submit']))
                         {
                             if($mdp1 == $mdp2)
                              {
-                                $insertmbr = $bdd->prepare("INSERT INTO connexion(pseudo, email, mdp) VALUES(? ,?, ?)");
-                                $insertmbr->execute(array($pseudo, $email1, $mdp1));
-                                $_SESSION['comptcree'] = "Votre compte a bien été crée !";
-                                header("location: connexion.php");
-                             }
+                                $longueurKey = 15;
+                                $key = "";
+                                for($i=1;$i<$longueurKey;$i++) {
+                                    $key .= mt_rand(0,9);
+                                }
+                                $insertmbr = $bdd->prepare("INSERT INTO connexion(pseudo, email, mdp, confirmkey) VALUES(?, ?, ?, ?, ?)");
+            
+                                $insertmbr->execute(array($pseudo, $mail, $mdp, $key));
+            
+                                $header="MIME-Version: 1.0\r\n";
+                                $header.='From:"[VOUS]"<votremail@mail.com>'."\n";
+                                $header.='Content-Type:text/html; charset="uft-8"'."\n";
+                                $header.='Content-Transfer-Encoding: 8bit';
+                                $message='
+                                <html>
+                                    <body>
+                                    <div align="center">
+                                        <a href="http://127.0.0.1/dwam-stage-mode83/php/confirmation.php?pseudo='.urlencode($pseudo).'&key='.$key.'">Confirmez votre compte !</a>
+                                    </div>
+                                    </body>
+                                </html>
+                                ';
+                                mail($mail, "Confirmation de compte", $message, $header);
+                                $erreur = "Votre compte a bien été créé ! ";
+                                header("loaction: connexion.php");
+                                    }
                              else
                              {
                                  $erreur = "Vos mots de passes ne correspondent pas !";
