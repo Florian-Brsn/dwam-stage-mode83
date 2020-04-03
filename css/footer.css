@@ -1,0 +1,126 @@
+/*FOOTER*/
+
+.footer{
+	width: auto;
+	height: 230px;
+	background-color: #272727;
+	border-top: #683d68;
+	margin-top: 100px;
+}
+
+/*creer un bloc transparent pour recentrer le contenu du footer*/
+
+.footer{
+	display: flex;
+}
+
+.invisible{
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.container_footer{
+	display: flex;
+	justify-content: space-around;
+	padding-top: 40px;
+
+}
+
+.container_footer img{
+	width: 60px;
+	height: auto;
+	margin: auto;
+	
+
+}
+
+.container_footer p{
+	color: white;
+	text-align: center;
+	margin: auto;
+	font-family: sans-serif;
+	line-height: 150%;
+}
+
+.geo {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.geo img{
+	margin-bottom: 25px;
+}
+
+.message {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.message img{
+	margin-bottom: 25px;
+}
+
+
+.telephone {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.telephone img{
+	margin-bottom: 25px;
+}
+
+.reseau {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.reseaux img{
+	margin-bottom: 25px;
+}
+
+/* ANCRE ACCUEIL */
+
+.container_ancre{
+	width: 40px;
+	height: 50px;
+	background-color: #9370DB;
+	right: 75px;
+	position: absolute;
+}
+
+.container_ancre:link{
+	background-color: #9370DB;
+}
+
+.container_ancre:visited{
+	background-color: #9370DB;
+}
+
+.container_ancre:hover{
+	background-color: #FF7F50
+}
+
+.ancre{
+	font-size: 40px;
+	text-decoration: none;
+	display: flex;;
+	justify-content: center;
+}
+
+.acnre:link{
+	color: white;
+}
+
+.ancre:visited{
+	color: white;
+}
+
+.ancre:hover{
+	color: white;
+}
