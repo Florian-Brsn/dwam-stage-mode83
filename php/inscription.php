@@ -35,7 +35,7 @@ if(isset($_POST['submit']))
                                 for($i=1;$i<$longueurKey;$i++) {
                                     $key .= mt_rand(0,9);
                                 }
-                                $insertmbr = $bdd->prepare("INSERT INTO connexion(pseudo, email, mdp, confirmkey) VALUES(?, ?, ?, ?, ?)");
+                                $insertmbr = $bdd->prepare("INSERT INTO connexion(pseudo, email, mdp, confirmkey) VALUES(?, ?, ?, ?)");
             
                                 $insertmbr->execute(array($pseudo, $mail, $mdp, $key));
             
