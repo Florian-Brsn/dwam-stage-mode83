@@ -1,13 +1,18 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=blog' , 'admin' , 'admin');
+
+include 'function.php';
+
+?>
+<?php
+$bdd = new PDO('mysql:host=modencvefoad.mysql.db;dbname=modencvefoad' , 'modencvefoad' , 'Formation83');
 
 if(isset($_POST['submit']))
 {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $email1 = htmlspecialchars($_POST['email1']);
     $email2 = htmlspecialchars($_POST['email2']);
-    $mdp1 = sha1($_POST['mdp1']);
-    $mdp2 = sha1($_POST['mdp2']);
+    $mdp1   = password_hash($_POST['mdp1'], PASSWORD_BCRYPT);
+    $mdp2   = password_hash($_POST['mdp2'], PASSWORD_BCRYPT);
 
     if(!empty($_POST['pseudo']) AND !empty($_POST['email1']) AND !empty($_POST['email2']) AND !empty($_POST['mdp1']) AND !empty($_POST['mdp2']))
     {
@@ -18,43 +23,26 @@ if(isset($_POST['submit']))
             {
                 if(filter_var($email1, FILTER_VALIDATE_EMAIL))
                 {
-                    $reqemail = $bdd->prepare("SELECT * FROM connexion WHERE email =?");
+                    $reqemail = $bdd->prepare("SELECT * FROM DWTL_connexion WHERE email =?");
                     $reqemail->execute(array($email1));
                     $emailexist = $reqemail->rowCount();
                     if($emailexist == 0)
                     {
-                        $reqpseudo = $bdd->prepare("SELECT * FROM connexion WHERE pseudo =?");
+                        $reqpseudo = $bdd->prepare("SELECT * FROM DWTL_connexion WHERE pseudo =?");
                         $reqpseudo->execute(array($pseudo));
                         $pseudoexist = $reqpseudo->rowCount();
                         if($pseudoexist == 0)
                         {
                             if($mdp1 == $mdp2)
-                             {
-                                $longueurKey = 15;
-                                $key = "";
-                                for($i=1;$i<$longueurKey;$i++) {
-                                    $key .= mt_rand(0,9);
-                                }
-                                $insertmbr = $bdd->prepare("INSERT INTO connexion(pseudo, email, mdp, confirmkey) VALUES(?, ?, ?, ?)");
-            
-                                $insertmbr->execute(array($pseudo, $mail, $mdp, $key));
-            
-                                $header="MIME-Version: 1.0\r\n";
-                                $header.='From:"[VOUS]"<votremail@mail.com>'."\n";
-                                $header.='Content-Type:text/html; charset="uft-8"'."\n";
-                                $header.='Content-Transfer-Encoding: 8bit';
-                                $message='
-                                <html>
-                                    <body>
-                                    <div align="center">
-                                        <a href="http://127.0.0.1/dwam-stage-mode83/php/confirmation.php?pseudo='.urlencode($pseudo).'&key='.$key.'">Confirmez votre compte !</a>
-                                    </div>
-                                    </body>
-                                </html>
-                                ';
-                                mail($mail, "Confirmation de compte", $message, $header);
+                             {      
+                                $insertmbr = $bdd->prepare("INSERT INTO DWTL_connexion(pseudo, email, mdp, confirmkey) VALUES(?, ?, ?, ?)");
+                                $key = str_random(60);
+                                $insertmbr->execute(array($pseudo, $email, $mdp, $key));
+                                $user_id = $pdo->lastinsertid();
+                                mail($_POST['email'], 'Confirmation de votre compte', "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttps://formations.mode83.net/DWAM/dwtl_blog/php/inscription.php?id=$user_id&confirmkey=$key");
+
                                 $erreur = "Votre compte a bien été créé ! ";
-                                header("loaction: connexion.php");
+                                // header("loaction: php/connexion.php");
                                     }
                              else
                              {
@@ -99,7 +87,7 @@ if(isset($_POST['submit']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="/dwam-stage-mode83/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://formations.mode83.net/DWAM/dwtl_blog/css/bootstrap.min.css">
 </head>
 <body>
 <!--Titre et header-->
@@ -150,6 +138,11 @@ if(isset($_POST['submit']))
 
         </form>
     </div>
+    <?php
+
+    echo "<font color='red'>".$erreur."</font>";
+
+    ?>
 </section>
 
 
@@ -164,8 +157,3 @@ if(isset($_POST['submit']))
 
 
 
-<?php
-
-echo "<font color='red'>".$erreur."</font>";
-
-?>
