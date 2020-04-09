@@ -7,7 +7,9 @@ include 'function.php';
 $bdd = new PDO('mysql:host=modencvefoad.mysql.db;dbname=modencvefoad' , 'modencvefoad' , 'Formation83');
 
 if(isset($_POST['submit']))
-{
+{   
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $email1 = htmlspecialchars($_POST['email1']);
     $email2 = htmlspecialchars($_POST['email2']);
@@ -15,8 +17,11 @@ if(isset($_POST['submit']))
     $mdp2   = sha1($_POST['mdp2']);
     // $mdp1   = password_hash($_POST['mdp1'], PASSWORD_BCRYPT);
     // $mdp2   = password_hash($_POST['mdp2'], PASSWORD_BCRYPT);
+    $formation = $_POST['formation'];
+    $ref = htmlspecialchars($_POST['ref']);
 
-    if(!empty($_POST['pseudo']) AND !empty($_POST['email1']) AND !empty($_POST['email2']) AND !empty($_POST['mdp1']) AND !empty($_POST['mdp2']))
+
+    if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['pseudo']) AND !empty($_POST['email1']) AND !empty($_POST['email2']) AND !empty($_POST['mdp1']) AND !empty($_POST['mdp2']) AND !empty($_POST['formation']) AND !empty($_POST['ref']))
     {
         $pseudolenght = strlen($pseudo);
         if($pseudolenght <= 255)
@@ -38,14 +43,14 @@ if(isset($_POST['submit']))
                             if($mdp1 == $mdp2)
                              {      
                                 $key = str_random(60);
-                                $insertmbr = $bdd->prepare("INSERT INTO DWTL_connexion SET pseudo = ?, email = ?, mdp = ?, confirmkey = ? ");
-                                $insertmbr->execute(array($pseudo, $email1, $mdp1, $key));
+                                $insertmbr = $bdd->prepare("INSERT INTO DWTL_connexion SET prenom = ?, nom =?, pseudo = ?, email = ?, mdp = ?, confirmkey = ?, formation = ?, ref = ? ");
+                                $insertmbr->execute(array($nom, $prenom, $pseudo, $email1, $mdp1, $key, $formation, $ref));
                                 $user_id = $bdd->lastinsertid();
                                 mail($_POST['email1'], 'Confirmation de votre compte', "Afin de valider votre compte merci de cliquer sur ce lien\n\nhttps://formations.mode83.net/DWAM/dwtl_blog/php/confirmation.php?id=$user_id&confirmkey=$key");
 
                                 $erreur = "Votre compte a bien été créé ! ";
                                 header("loaction: php/connexion.php");
-                                    }
+                            }
                              else
                              {
                                  $erreur = "Vos mots de passes ne correspondent pas !";
@@ -110,6 +115,16 @@ if(isset($_POST['submit']))
 <section class="bg-secondary px-5 mt-5 py-5 text-light">
     <div>
         <form method="POST">
+        
+            <div class="form-group">
+            <label>Nom</label>
+            <input type="text" name="nom" placeholder="Veuillez indiquer votre Nom." class=" form-control" value="<?php if(isset($nom)) { echo $nom;} ?>" />
+            </div>
+
+            <div class="form-group">
+            <label>Prenom</label>
+            <input type="text" name="prenom" placeholder="Veuillez indiquer votre Prenom." class=" form-control" value="<?php if(isset($prenom)) { echo $prenom;} ?>"/>
+            </div>
 
             <div class="form-group">
             <label>pseudo</label>
@@ -136,7 +151,49 @@ if(isset($_POST['submit']))
             <input type="password" name="mdp2" placeholder="Veuillez confirmer votre mot de passe." class=" form-control" />
             </div>
 
-            <input  type="submit" name="submit" value="S'inscrire !" />
+            <!-- <div class="form-group">
+            <label>Confirmation de mot de passe</label>
+            <input type="password" name="mdp2" placeholder="Veuillez confirmer votre mot de passe." class=" form-control" />
+            </div> -->
+            <div >
+                <label> Formation</label><br />
+                <select type ="text" name="formation">
+                <option value="DWAM">DWAM</option>
+                <option value="WDDI">DDDI</option>
+                <option value="anglais">Anglais</option>
+                <option value="informatique">Informatique</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+            <label>Référence</label>
+            <input type="text" name="ref" placeholder="Veuillez entrer votre référence." class=" form-control" />
+            </div>
+
+            <!-- <input  type="submit" name="submit" value="S'inscrire !" /> -->
+            
+            <input name= "submit" class="btn btn-primary" type="submit" value="S'inscrire !">
+
+            <!-- Modal -->
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    
+                </div>
+                </div>
+            </div>
+            </div> -->
             <a href="connexion.php">Déjà inscrit.</a>
 
         </form>

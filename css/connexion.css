@@ -1,0 +1,186 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	display: flex;
+	justify-content: center;
+}
+
+.content{
+	width: 200px;
+	height: auto;
+	background-color: white;
+	border-color: #0a5b77;
+	border-style: solid;
+	border-width: 5px;
+	border-radius: 40px;
+	box-shadow: 5px 5px 30px -10px black;
+}
+
+.se_connecter{
+	font-weight: bolder;
+	text-align: center;
+	color: #333333;
+	font-size: 20px;
+	font-family: arial, sans serif;
+}
+
+.formulaire_connexion{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.formulaire_inscription{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.hr{
+	width: 40px;
+	background-color: black;
+	margin-bottom: 1px;
+}
+
+/* STYLE LABEL */
+
+#pseudo{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#mdp{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+
+#nom{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#Prenom{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#confirmation_mdp{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#formation{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+#reference{
+	width: 150px;
+	height: 20px;
+	border-color: grey;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+
+/* MENU DEROULANT */
+
+	
+
+	ul,li{padding: 0;margin: 0;list-style-type: none;}
+	 
+	nav > ul > li{
+	  position: relative; 
+	  display: inline-block;
+	  
+	}
+	/* je représente mon bouton et son apparence non selectionne*/
+	nav > ul > li > a:link,
+	nav > ul > li > a:hover,
+	nav > ul > li > a:active,
+	nav > ul > li > a:focus,
+	nav > ul > li > a {
+	    
+	    display: inline-block; /* mettre en ligne les boutons*/ 
+	    z-index: 1; /*My first my last my everything*/
+	}
+	/* je représente mon bouton quand utilisé*/ 
+	nav > ul > li > a:hover,
+	nav > ul > li > a:active,
+	nav > ul > li > a:focus {
+	    opacity:1; /* J'ajoute 1 en opacité*/
+	}
+	li > ul > li > a:link,
+	li > ul > li > a:hover,
+	li > ul > li > a:active,
+	li > ul > li > a:focus,
+	li > ul > li a{
+	  color:#444;
+	  text-decoration: none; 
+	}
+	li > ul > li:hover{
+	  background-color:#444;
+	}
+	li > ul > li:hover a{
+	  color:#fff;
+	}
+	li > ul > li{padding:5px;}
+	nav li > ul{display:none; position: absolute; background-color:#fff;border:1px solid #444;
+	 box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5), /* design de la box*/
+	                0 -1px 0 rgba( 255, 255, 255, 0.4);
+	  
+	}
+	nav li:hover > ul{display:block;width:100%;}
+
+
+
+/* SUITE */
+
+.cadenas{
+	width: 40px;
+}
+
+.fleche{
+	width: 40px;
+}
+
+.fleche_bleue{
+	width: 50px;
+}
+

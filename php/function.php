@@ -163,3 +163,78 @@ function connect_from_session($pseudo)
 function show_errors()
 {
 }
+
+//tester si session ouverte
+
+function testSession(){
+    if(!isset($_SESSION['utilisateur_id']))
+    {
+        header('Location: connexion.php');
+        exit;
+    }
+}
+
+
+//fonction input liste déroulante 
+
+
+function query($sql, $vars = NULL, $debug = false) {
+		
+	if ($debug==true){
+		$sql_debug = $sql;
+		if (count($vars)>0){
+			foreach($vars as $key => $value){
+				// echo $key." : ".$value."<br/>";
+				$sql_debug = str_replace($key, "'".str_replace("'", "''", $value)."'", $sql_debug);
+			}
+		}
+		echo "<pre>";print_r($sql_debug);
+	}	
+	$res = $GLOBALS['conn']->prepare($sql);	
+	if ($res === FALSE) {
+		return FALSE;
+	}
+
+	$result = $res->execute($vars);
+	if ($result !== FALSE) {
+		return $res;
+	}
+	
+	
+	// Erreur
+	$error = $res->errorInfo();
+	$file = __FILE__;
+	$line = __LINE__;
+	if ($file || $line){
+		//log_sql_error($sql,$error[2]);
+		Kill($sql.$error[2], $file, $line);
+	}
+	
+	return(false);
+}
+
+
+
+function Kill($msg = "", $file = null, $line = null)
+{
+	if ($msg)
+	{	if ($file)
+		{	$msg .= " dans {$file}";
+			if ($line)
+				$msg .= ", ligne {$line}";
+		}
+		$msg .= " :\n";
+	}
+	elseif ($file)
+	{	$msg = $file;
+		if ($line)
+			$msg .= ", ligne {$line}";
+		$msg .= " :\n";
+	}
+	die("<font color='red'>".$msg."</font>");
+}
+
+
+function fetch_object($req) {
+	return $req->fetchObject();
+}

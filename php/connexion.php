@@ -1,14 +1,14 @@
 <?php
 session_start();
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=blog', 'admin', 'admin');
+$bdd = new PDO('mysql:host=modencvefoad.mysql.db;dbname=modencvefoad' , 'modencvefoad' , 'Formation83');
 
 if(isset($_POST['submit']))
 {
     $email = htmlspecialchars($_POST['email']);
-    $mdp = /*sha1*/($_POST['mdp']);
+    $mdp = sha1($_POST['mdp']);
     if(!empty($email) AND !empty($mdp))
     {
-        $requser = $bdd->prepare("SELECT * FROM connexion WHERE email =? AND mdp =?");
+        $requser = $bdd->prepare("SELECT * FROM DWTL_connexion WHERE email = ? AND mdp = ?");
         $requser->execute(array($email, $mdp));
         $userexist = $requser->rowCount();
         if($userexist == 1)
@@ -37,7 +37,7 @@ if(isset($_POST['submit']))
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="/dwam-stage-mode83/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://formations.mode83.net/DWAM/dwtl_blog/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -59,14 +59,14 @@ if(isset($_POST['submit']))
 
       <div class=" form-group">
         <label>Mot De Passe</label>
-        <input type="text" name="mdp" placeholder="Entrez votre Mot De Passe." class="form-control" />
+        <input type="password" name="mdp" placeholder="Entrez votre Mot De Passe." class="form-control" />
       </div>
     
       
-        <input  type="submit" name="submit" value="Se connecter !" />
+      <input name= "submit" class="btn btn-primary" type="submit"  value="Se connecter !" />
       </form>  
 
-      <button class="btn btn-danger"> <a href=" /dwam-stage-mode83/php/inscription.php">Inscription</a></button>
+      <button class="btn btn-danger"> <a href="/DWAM/dwtl_blog/php/inscription.php">Inscription</a></button>
 
 
       <?php

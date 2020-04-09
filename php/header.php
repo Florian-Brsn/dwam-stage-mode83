@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="/dwam-stage-mode83/css/header.css">
+	<link rel="stylesheet" type="text/css" href="https://formations.mode83.net/DWAM/dwtl_blog/css/header.css">
 	<title>header</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
 		<!--ombre portée sur le bloc blanc du header-->
 		<div class="header">
 			<!-- Mettre Logo MODE83 à gauche-->
-			<img src="/dwam-stage-mode83/img/logo_mode.jpg" alt="MODE83">
+			<img src="https://formations.mode83.net/DWAM/dwtl_blog/img/logo_mode.jpg" alt="MODE83">
 			<!--Menu à droite avec onglet télétravail-->
 			<nav class="dropdownmenu">
 				<ul>
@@ -19,7 +19,7 @@
 						<ul>
 							<div class="menu1">
 								<li>
-									<img src="/dwam-stage-mode83/img/menu_blog.png" alt="blog télétravail">
+									<img src="https://formations.mode83.net/DWAM/dwtl_blog/img/menu_blog.png" alt="blog télétravail">
 									<a href="#" title="Blog">
 										Blog
 									</a>
@@ -27,7 +27,7 @@
 								</li>
 								<li>
 								
-									<img src="/dwam-stage-mode83/img/menu_definition.png" alt="definition télétravail">
+									<img src="https://formations.mode83.net/DWAM/dwtl_blog/img/menu_definition.png" alt="definition télétravail">
 									<a href="#" title="definition">
 										Qu'est-ce que le télétravail?
 									</a>	
@@ -36,7 +36,7 @@
 							<div class="menu2">
 								<li>
 								
-									<img src="/dwam-stage-mode83/img/menu_outils.png" alt="outils">
+									<img src="https://formations.mode83.net/DWAM/dwtl_blog/img/menu_outils.png" alt="outils">
 									<a href="#" title="outils">
 										Outils télétravail
 									</a>
@@ -44,7 +44,7 @@
 								</li>
 								<li>
 								
-									<img src="/dwam-stage-mode83/img/menu_projets.png"alt="projets">
+									<img src="https://formations.mode83.net/DWAM/dwtl_blog/img/menu_projets.png"alt="projets">
 									<a href="#" title="projets">
 										Projets
 									</a>
