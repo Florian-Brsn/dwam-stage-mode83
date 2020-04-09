@@ -2,7 +2,7 @@
 $server = "modencvefoad.mysql.db"; // localisation du serveur MSSQL
 $name = "modencvefoad"; // Login de l'utilisateur
 $password = "Formation83"; // Password de l'utilisateur
-$base = "modencvefoad"; // Nom de la Base de donn�es
+$base = "modencvefoad"; // Nom de la Base de donnees
 
 $dsn = 'mysql:dbname='.$base.';host='.$server;
 

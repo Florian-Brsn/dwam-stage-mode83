@@ -1,6 +1,6 @@
 <?php
+session_start();
 include "function.php";
-
 ?>
 
 <?php
@@ -117,22 +117,54 @@ if(isset($_POST['submit']))
 	<section class="container">
 		
 		<div class="content">
+    <?php
+        if(isset($_POST['submit']))
+        {
+            $email = htmlspecialchars($_POST['email']);
+            $mdp = sha1($_POST['mdp']);
+            if(!empty($email) AND !empty($mdp))
+            {
+                $requser = $bdd->prepare("SELECT * FROM DWTL_connexion WHERE email = ? AND mdp = ?");
+                $requser->execute(array($email, $mdp));
+                $userexist = $requser->rowCount();
+                if($userexist == 1)
+                {
+                    $userinfo = $requser->fetch();
+                    $_SESSION['id'] = $userinfo['id'];
+                    $_SESSION['pseudo'] = $userinfo['pseudo'];
+                    $_SESSION['email'] = $userinfo['email'];
+                    header("location: loremipsum.php=".$_SESSION['id']);
+                }
+                else
+                {
+                    $erreur = "Identifiants Incorrects !";
+                }
+            }
+            else
+            {
+                $erreur = "Tous les champs doivent être complétés !";
+            }
+        }
+
+        ?>
 
 			<p class="se_connecter">Se connecter</p>
 
 			<div class="formulaire_connexion">
 				<!-- PSEUDO -->
-				
-				<label for="pseudo"></label>
-                <input type="text" id="pseudo" placeholder="Pseudo" required="required">
+				<form action="">
+				<label for="Email"></label>
+                <input type="email" id="pseudo" placeholder="email" required="required" name="email">
                 
   				<!-- MOT DE PASSE -->
   				
                 <label for="mdp"></label>
-                <input type="password" id="mdp" placeholder="Mot de passe" required="required">
+                <input type="password" id="mdp" placeholder="Mot de passe" required="required" name="mdp">
                 
+                <input name= "submit2" class="btn btn-primary" type="submit"  value="Se connecter !" />
                 <!-- BOUTON -->
                 <a href="#"><img src="img/cadenas.png" class="cadenas"></a>
+            </form>
 			</div>
 
 			<div class="formulaire_inscription">
